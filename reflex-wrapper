@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
+pid=""
 
 _int() {
-  echo "INT (run.sh)"
+  echo "INT (reflex-wrapper) -> killing PID $pid"
   kill $pid || true
   wait $pid || true
 
-  echo "EXIT 0 (run.sh)"
+  echo "EXIT 0 (reflex-wrapper)"
   exit 0
 }
 
