@@ -13,9 +13,11 @@ _int() {
 trap '_int' INT
 
 while true; do
-  $@ &
-  pid=$!
-  wait $pid
+  set +e
+    $@ &
+    pid=$!
+    wait $pid
+  set -e
 
   echo ""
   echo "-- restart"
